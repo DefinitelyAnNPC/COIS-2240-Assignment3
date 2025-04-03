@@ -1,19 +1,32 @@
 import java.util.List;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
 
 public class RentalSystem {
 	private static RentalSystem instance;
     private List<Vehicle> vehicles = new ArrayList<>();
     private List<Customer> customers = new ArrayList<>();
-    private RentalHistory rentalHistory = new RentalHistory();
+    private RentalHistory rentalHistory = new RentalHistory();	
+    
+    private File veh = new File("vehicles.txt");
+    private File cus = new File("customers.txt");;
+    private File rec = new File("rental_records.txt");;
+    
+	private BufferedWriter writer;
 
     public void addVehicle(Vehicle vehicle) {
         vehicles.add(vehicle);
+        saveVehicle(vehicle);
     }
 
     public void addCustomer(Customer customer) {
         customers.add(customer);
+        saveCustomer(customer);
     }
 
     public void rentVehicle(Vehicle vehicle, Customer customer, LocalDate date, double amount) {
@@ -21,6 +34,7 @@ public class RentalSystem {
             vehicle.setStatus(Vehicle.VehicleStatus.RENTED);
             rentalHistory.addRecord(new RentalRecord(vehicle, customer, date, amount, "RENT"));
             System.out.println("Vehicle rented to " + customer.getCustomerName());
+            saveRecord(new RentalRecord(vehicle, customer, date, amount, "RENT"));
         }
         else {
             System.out.println("Vehicle is not available for renting.");
@@ -32,6 +46,7 @@ public class RentalSystem {
             vehicle.setStatus(Vehicle.VehicleStatus.AVAILABLE);
             rentalHistory.addRecord(new RentalRecord(vehicle, customer, date, extraFees, "RETURN"));
             System.out.println("Vehicle returned by " + customer.getCustomerName());
+            saveRecord(new RentalRecord(vehicle, customer, date, extraFees, "RETURN"));
         }
         else {
             System.out.println("Vehicle is not rented.");
@@ -96,5 +111,38 @@ public class RentalSystem {
     		instance = new RentalSystem();
     	}
     	return instance;
+    }
+    
+    public void saveVehicle(Vehicle vehicle) {
+    	try {
+    		writer = new BufferedWriter(new FileWriter(veh, true));
+    		writer.append(vehicle.getInfo());
+    		writer.newLine();
+    		writer.close();
+    	} catch (IOException e) {
+				e.printStackTrace();
+    	}
+    }
+    
+    public void saveCustomer(Customer customer) {
+    	try {
+    		writer = new BufferedWriter(new FileWriter(cus, true));
+    		writer.append(customer.toString());
+    		writer.newLine();
+    		writer.close();
+    	} catch (IOException e) {
+				e.printStackTrace();
+    	}
+    }
+    
+    public void saveRecord(RentalRecord record) {
+    	try {
+    		writer = new BufferedWriter(new FileWriter(rec, true));
+    		writer.append(record.toString());
+    		writer.newLine();
+    		writer.close();
+    	} catch (IOException e) {
+				e.printStackTrace();
+    	}
     }
 }

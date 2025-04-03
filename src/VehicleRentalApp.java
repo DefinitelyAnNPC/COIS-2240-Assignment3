@@ -50,19 +50,21 @@ public class VehicleRentalApp {
                     if (vehicle != null){
 	                    vehicle.setLicensePlate(plate);
 	                    rentalSystem.addVehicle(vehicle);
-	                    System.out.print("Vehicle added.");
+	                    System.out.println("Vehicle added.");
                     }
                     else {
-	                    System.out.print("Vehicle not added.");
+	                    System.out.println("Vehicle not added.");
                     }
                     break;
 
                 case 2:
                     System.out.print("Enter customer ID: ");
                     int cid = scanner.nextInt();
+                    scanner.nextLine();
+                    
                     System.out.print("Enter name: ");
                     String cname = scanner.nextLine();
-
+                    
                     rentalSystem.addCustomer(new Customer(cid, cname));
                     System.out.println("Customer added.");
                     break;
