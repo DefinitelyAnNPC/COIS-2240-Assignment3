@@ -1,0 +1,3 @@
+| 123ABC | Toyota | Q1 | 2000 | AVAILABLE | | Seats: 4
+| QWERT | Yui | W2 | 2010 | AVAILABLE | | Sidecar: Yes
+| ASDF123 | Mazda | Z1 | 2010 | AVAILABLE | | Cargo Capacity: 5.0

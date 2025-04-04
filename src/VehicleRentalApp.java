@@ -32,17 +32,17 @@ public class VehicleRentalApp {
                         System.out.print("Enter number of seats: ");
                         int seats = scanner.nextInt();
                         vehicle = new Car(make, model, year, seats);
-                        System.out.println("Car added successfuly.");
+                        System.out.println("Car added successfuly.\n");
                     } else if (type == 2) {
                         System.out.print("Has sidecar? (true/false): ");
                         boolean sidecar = scanner.nextBoolean();
                         vehicle = new Motorcycle(make, model, year, sidecar);
-                        System.out.print("Motorcycle added successfuly.");
+                        System.out.print("Motorcycle added successfuly.\n");
 		            } else if (type == 3) {
 		                System.out.print("Enter the cargo capacity: ");
 		                double cargoCapacity = scanner.nextDouble();
 		                vehicle = new Truck(make, model, year, cargoCapacity);
-		                System.out.print("Motorcycle added successfuly.");
+		                System.out.print("Motorcycle added successfuly.\n");
 		            } else {
 		            	vehicle = null;
 		            }
@@ -50,10 +50,10 @@ public class VehicleRentalApp {
                     if (vehicle != null){
 	                    vehicle.setLicensePlate(plate);
 	                    rentalSystem.addVehicle(vehicle);
-	                    System.out.println("Vehicle added.");
+	                    System.out.println("Vehicle added.\n");
                     }
                     else {
-	                    System.out.println("Vehicle not added.");
+	                    System.out.println("Vehicle not added.\n");
                     }
                     break;
 
@@ -134,7 +134,7 @@ public class VehicleRentalApp {
                     rentalSystem.displayRentalHistory();
                     break;
                     
-                case 0:
+                case 7:
                 	scanner.close();
                     System.exit(0);
             }
