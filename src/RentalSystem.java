@@ -48,10 +48,10 @@ public class RentalSystem {
 		if (vehicle.getStatus() == Vehicle.VehicleStatus.AVAILABLE) {
 			vehicle.setStatus(Vehicle.VehicleStatus.RENTED);
 			rentalHistory.addRecord(new RentalRecord(vehicle, customer, date, amount, "RENT"));
-			System.out.println("Vehicle rented to " + customer.getCustomerName());
+			System.out.println("\nVehicle rented to " + customer.getCustomerName() + "\n");
 			saveRecord(new RentalRecord(vehicle, customer, date, amount, "RENT"));
 		} else {
-			System.out.println("Vehicle is not available for renting.");
+			System.out.println("\nVehicle is not available for renting.\n");
 		}
 	}
 
@@ -59,10 +59,10 @@ public class RentalSystem {
 		if (vehicle.getStatus() == Vehicle.VehicleStatus.RENTED) {
 			vehicle.setStatus(Vehicle.VehicleStatus.AVAILABLE);
 			rentalHistory.addRecord(new RentalRecord(vehicle, customer, date, extraFees, "RETURN"));
-			System.out.println("Vehicle returned by " + customer.getCustomerName());
+			System.out.println("\nVehicle returned by " + customer.getCustomerName() + "\n");
 			saveRecord(new RentalRecord(vehicle, customer, date, extraFees, "RETURN"));
 		} else {
-			System.out.println("Vehicle is not rented.");
+			System.out.println("\nVehicle is not rented.\n");
 		}
 	}
 

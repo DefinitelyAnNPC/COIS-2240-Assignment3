@@ -1,3 +1,2 @@
-Customer ID: 12345 | Name: j
-Customer ID: 7890 | Name: k
-Customer ID: 2000 | Name: m
+Customer ID: 1 | Name: George
+Customer ID: 2 | Name: Anne

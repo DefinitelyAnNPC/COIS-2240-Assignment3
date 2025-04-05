@@ -8,12 +8,14 @@ public class VehicleRentalApp {
 
         while (true) {
         	System.out.println("1: Add Vehicle\n2: Add Customer\n3: Rent Vehicle\n4: Return Vehicle\n5: Display Available Vehicles\n6: Show Rental History\n7: Exit");
-            int choice = scanner.nextInt();
+        	System.out.print("Enter here => ");
+        	int choice = scanner.nextInt();
             scanner.nextLine();
 
             switch (choice) {
                 case 1:
                     System.out.println("  1: Car\n  2: Motorcycle\n  3: Truck");
+                    System.out.print("Enter here => ");
                     int type = scanner.nextInt();
                     scanner.nextLine();
 
@@ -32,7 +34,7 @@ public class VehicleRentalApp {
                         System.out.print("Enter number of seats: ");
                         int seats = scanner.nextInt();
                         vehicle = new Car(make, model, year, seats);
-                        System.out.println("Car added successfuly.\n");
+                        System.out.println("\nCar added successfuly.");
                     } else if (type == 2) {
                         System.out.print("Has sidecar? (true/false): ");
                         boolean sidecar = scanner.nextBoolean();

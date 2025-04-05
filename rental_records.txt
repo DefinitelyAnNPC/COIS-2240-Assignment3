@@ -1,4 +1,5 @@
-RENT | Plate: 123ABC | Customer: j | Date: 2025-04-04 | Amount: $5.0
-RETURN | Plate: 123ABC | Customer: j | Date: 2025-04-04 | Amount: $2.0
-RENT | Plate: QWERT | Customer: k | Date: 2025-04-04 | Amount: $2.0
-RETURN | Plate: QWERT | Customer: k | Date: 2025-04-04 | Amount: $5.0
+RENT | Plate: AAA111 | Customer: George | Date: 2025-04-04 | Amount: $50.0
+RENT | Plate: CCC333 | Customer: George | Date: 2025-04-04 | Amount: $100.0
+RENT | Plate: BBB222 | Customer: Anne | Date: 2025-04-04 | Amount: $20.0
+RETURN | Plate: CCC333 | Customer: George | Date: 2025-04-04 | Amount: $10.0
+RENT | Plate: CCC333 | Customer: Anne | Date: 2025-04-04 | Amount: $25.0
