@@ -47,10 +47,13 @@ public class VehicleRentalApp {
 		            	vehicle = null;
 		            }
                     
-                    if (vehicle != null){
+                    if (vehicle != null ){
 	                    vehicle.setLicensePlate(plate);
-	                    rentalSystem.addVehicle(vehicle);
-	                    System.out.println("Vehicle added.\n");
+	                    boolean plateTest= rentalSystem.addVehicle(vehicle);
+	                    if(plateTest)
+	                    	System.out.println("Vehicle added.\n");
+	                    else
+	                    	System.out.println("Vehicle not added.\n");
                     }
                     else {
 	                    System.out.println("Vehicle not added.\n");
@@ -65,8 +68,11 @@ public class VehicleRentalApp {
                     System.out.print("Enter name: ");
                     String cname = scanner.nextLine();
                     
-                    rentalSystem.addCustomer(new Customer(cid, cname));
-                    System.out.println("Customer added.");
+                    boolean custTest = rentalSystem.addCustomer(new Customer(cid, cname));
+                    if(custTest)
+                    	System.out.println("Customer added.\n");
+                    else
+                    	System.out.println("Customer not added.\n");
                     break;
                     
                 case 3:
