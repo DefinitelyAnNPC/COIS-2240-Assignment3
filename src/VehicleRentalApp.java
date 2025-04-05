@@ -14,51 +14,60 @@ public class VehicleRentalApp {
 
             switch (choice) {
                 case 1:
-                    System.out.println("  1: Car\n  2: Motorcycle\n  3: Truck");
-                    System.out.print("Enter here => ");
-                    int type = scanner.nextInt();
-                    scanner.nextLine();
+                    try {
+                    	System.out.println("  1: Car\n  2: Motorcycle\n  3: Truck");
+                    	System.out.print("Enter here => ");
+                    	int type = scanner.nextInt();
+                    	scanner.nextLine();
 
-                    System.out.print("Enter license plate: ");
-                    String plate = scanner.nextLine().toUpperCase();
-                    System.out.print("Enter make: ");
-                    String make = scanner.nextLine();
-                    System.out.print("Enter model: ");
-                    String model = scanner.nextLine();
-                    System.out.print("Enter year: ");
-                    int year = scanner.nextInt();
-                    scanner.nextLine();
+                    	System.out.print("Enter license plate: ");
+                    	String plate = scanner.nextLine().toUpperCase();
+                    	System.out.print("Enter make: ");
+                    	String make = scanner.nextLine();
+                    	System.out.print("Enter model: ");
+                    	String model = scanner.nextLine();
+                    	System.out.print("Enter year: ");
+                    	int year = scanner.nextInt();
+                    	scanner.nextLine();
 
-                    Vehicle vehicle;
-                    if (type == 1) {
-                        System.out.print("Enter number of seats: ");
-                        int seats = scanner.nextInt();
-                        vehicle = new Car(make, model, year, seats);
-                        System.out.println("\nCar added successfuly.");
-                    } else if (type == 2) {
-                        System.out.print("Has sidecar? (true/false): ");
-                        boolean sidecar = scanner.nextBoolean();
-                        vehicle = new Motorcycle(make, model, year, sidecar);
-                        System.out.print("Motorcycle added successfuly.\n");
-		            } else if (type == 3) {
-		                System.out.print("Enter the cargo capacity: ");
-		                double cargoCapacity = scanner.nextDouble();
-		                vehicle = new Truck(make, model, year, cargoCapacity);
-		                System.out.print("Motorcycle added successfuly.\n");
-		            } else {
-		            	vehicle = null;
-		            }
+                    	Vehicle vehicle;
+                    	String typeMsg = "";
+                    	
+                    	if (type == 1) {
+                    		System.out.print("Enter number of seats: ");
+                    		int seats = scanner.nextInt();
+                    		vehicle = new Car(make, model, year, seats);
+                    		typeMsg = "Car added successfuly.\n";
+                    	} else if (type == 2) {
+                    		System.out.print("Has sidecar? (true/false): ");
+                    		boolean sidecar = scanner.nextBoolean();
+                    		vehicle = new Motorcycle(make, model, year, sidecar);
+                    		typeMsg = "Motorcycle added successfuly.\n";
+                    	} else if (type == 3) {
+                    		System.out.print("Enter the cargo capacity: ");
+                    		double cargoCapacity = scanner.nextDouble();
+                    		vehicle = new Truck(make, model, year, cargoCapacity);
+                    		typeMsg = "Motorcycle added successfuly.\n";
+                    	} else {
+                    		vehicle = null;
+                    	}
                     
-                    if (vehicle != null ){
-	                    vehicle.setLicensePlate(plate);
-	                    boolean plateTest= rentalSystem.addVehicle(vehicle);
-	                    if(plateTest)
-	                    	System.out.println("Vehicle added.\n");
-	                    else
-	                    	System.out.println("Vehicle not added.\n");
-                    }
-                    else {
-	                    System.out.println("Vehicle not added.\n");
+                    	if (vehicle != null ){  
+                    		vehicle.setLicensePlate(plate);
+                    		boolean plateTest= rentalSystem.addVehicle(vehicle);
+                    		if(plateTest) {
+                    			System.out.println(typeMsg);
+                    			System.out.println("Vehicle added.\n");
+                    		}
+                    		else
+    	                    	System.out.println("Vehicle not added.\n");
+                    	}
+                    	else {
+                    		System.out.println("Vehicle not added.\n");
+                    	}
+            		}
+                    catch(IllegalArgumentException e) {
+                    	System.out.println("\nIllegal Argument\n");
                     }
                     break;
 

@@ -20,13 +20,23 @@ public abstract class Vehicle {
     }
     
     private String capitalize(String input) {
-        if (input == null || input.isEmpty()) {
+        if (input == null || input == "") {
             return null;
         }
         return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
     }
 
+    public boolean isValidPlate(String plate) {
+        if (plate == null || plate == "") {
+            return false;
+        }
+        return plate.toUpperCase().matches("^[A-Z]{3}\\d{3}$");
+    }
+    
     public void setLicensePlate(String plate) {
+        if (!isValidPlate(plate)) {
+            throw new IllegalArgumentException("Invalid license plate format. Must be 3 letters followed by 3 digits.");
+        }
         this.licensePlate = plate == null ? null : plate.toUpperCase();
     }
 
