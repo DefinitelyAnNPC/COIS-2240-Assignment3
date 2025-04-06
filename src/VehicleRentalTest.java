@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
+
 
 @TestMethodOrder(OrderAnnotation.class)
 class VehicleRentalTest {
@@ -87,5 +90,22 @@ class VehicleRentalTest {
 		System.out.print("2. Try return: ");
 		boolean returnAgain = rentalSystem.returnVehicle(vehicle, customer, null, 0);
 		assertFalse(returnAgain);
+	}
+	
+	@Test
+	@Order(3)
+	void testSingletonRentalSystem() {
+		try {
+			Constructor<RentalSystem> constructor = RentalSystem.class.getDeclaredConstructor();
+			int modifiers = constructor.getModifiers();
+			
+			System.out.println("3. Modifiers.PRIVATE?: " + (modifiers == Modifier.PRIVATE));
+			assertEquals(modifiers, Modifier.PRIVATE);
+			System.out.println("3. Is Instance not null?: " + (rentalSystem != null));
+			assertNotNull(rentalSystem);
+		} 
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }
